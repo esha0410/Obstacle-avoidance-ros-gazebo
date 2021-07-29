@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 
-  <param name="robot_description" command="cat '$(find obstacle_avoidance)/urdf/myrobo.xacro'"/>
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find obstacle_avoidance)/urdf/myrobo.xacro'"/>
 
   <!-- send fake joint values -->
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
