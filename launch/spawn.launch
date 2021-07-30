@@ -7,13 +7,14 @@
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
   <arg name="model" default="$(find obstacle_avoidance)/urdf/myrobo.xacro"/>
+   <arg name="world" default="empty"/> 
 
  
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    
+    <arg name="world_name" value="$(find obstacle_avoidance)/worlds/full_world.world"/>
   </include>
 
-    <param name="robot_description" command="$(find xacro)/xacro.py '$(find obstacle_avoidance)/urdf/myrobo.xacro'"/>
+    <param name="robot_description" command="$(find xacro)/xacro $(arg model)"/>
   
     <arg name="x" default="0"/>
     <arg name="y" default="0"/>
