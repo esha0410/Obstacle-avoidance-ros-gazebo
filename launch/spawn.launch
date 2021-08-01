@@ -8,10 +8,10 @@
   <arg name="debug" default="false"/>
   <arg name="model" default="$(find obstacle_avoidance)/urdf/myrobo.xacro"/>
    <arg name="world" default="empty"/> 
-
+<arg name="world_name" value="$(find obstacle_avoidance)/worlds/world_try.world"/>
  
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find obstacle_avoidance)/worlds/full_world.world"/>
+    
   </include>
 
     <param name="robot_description" command="$(find xacro)/xacro $(arg model)"/>

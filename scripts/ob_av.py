@@ -25,47 +25,47 @@ def calbk_laser(msg):
 def motion(sensors):
     msg = Twist()
     linear_x = 0
-    angular_z = 0
+    angular_z = 5
     current_state = ''
     # 0 0 0
-    if sensors['FRONT'] > 1 and sensors['LEFT'] > 1 and sensors['RIGHT'] > 1 :
+    if sensors['FRONT'] > 1.5 and sensors['LEFT'] > 1.5 and sensors['RIGHT'] > 1.5 :
         current_state = '--- NO OBSTACLES ---'
-        linear_x = 0.6
+        linear_x = 3
         angular_z = 0
     # 0 1 0
-    elif sensors['FRONT'] < 1 and sensors['LEFT'] > 1 and sensors['RIGHT'] > 1:
+    elif sensors['FRONT'] < 1.5 and sensors['LEFT'] > 1.5 and sensors['RIGHT'] > 1.5:
         current_state = '--- OBSTACLE AT FRONT ---'
         linear_x = 0
-        angular_z = 0.3
+        angular_z = 33
     # 0 0 1
-    elif sensors['FRONT'] > 1 and sensors['LEFT'] > 1 and sensors['RIGHT'] < 1:
+    elif sensors['FRONT'] > 1.5 and sensors['LEFT'] > 1.5 and sensors['RIGHT'] < 1.5:
         current_state = '--- OBSTACLE AT RIGHT ---'
         linear_x = 0
-        angular_z = 0.3
+        angular_z = -33
     # 1 0 0
-    elif sensors['FRONT'] > 1 and sensors['LEFT'] < 1 and sensors['RIGHT'] > 1:
+    elif sensors['FRONT'] > 1.5 and sensors['LEFT'] < 1.5 and sensors['RIGHT'] > 1.5:
         current_state = '--- OBSTACLE AT LEFT ---'
         linear_x = 0
-        angular_z = -0.3
+        angular_z = 33
     # 0 1 1
-    elif sensors['FRONT'] < 1 and sensors['LEFT'] > 1 and sensors['RIGHT'] < 1:
+    elif sensors['FRONT'] < 1.5 and sensors['LEFT'] > 1.5 and sensors['RIGHT'] < 1.5:
         current_state = '--- OBSTACLE AT FRONT AND RIGHT ---'
         linear_x = 0
-        angular_z = 0.3
+        angular_z = -33
     # 1 1 0
-    elif sensors['FRONT'] < 1 and sensors['LEFT'] < 1 and sensors['RIGHT'] > 1:
+    elif sensors['FRONT'] < 1.5 and sensors['LEFT'] < 1.5 and sensors['RIGHT'] > 1.5:
         current_state = '--- OBSTACLE AT FRONT AND LEFT ---'
         linear_x = 0
-        angular_z = -0.3
+        angular_z = 33
     # 1 1 1
-    elif sensors['FRONT'] < 1 and sensors['LEFT'] < 1 and sensors['RIGHT'] < 1:
+    elif sensors['FRONT'] < 1.5 and sensors['LEFT'] < 1.5 and sensors['RIGHT'] < 1.5:
         current_state = '--- OBSTACLE AT FRONT, LEFT AND RIGHT ---'
         linear_x = 0
-        angular_z = 0.3
+        angular_z = 33
     # 1 0 1
-    elif sensors['FRONT'] > 1 and sensors['LEFT'] < 1 and sensors['RIGHT'] < 1:
+    elif sensors['FRONT'] > 1.5 and sensors['LEFT'] < 1 and sensors['RIGHT'] < 1.5:
         current_state = '--- OBSTACLE AT LEFT AND RIGHT ---'
-        linear_x = 0.3
+        linear_x = 3
         angular_z = 0
     else:
         current_state = 'UNKNOWN CASE'
